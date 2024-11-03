@@ -68,7 +68,49 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+private void performOperation(char operator) {
+        String num1Text = num1Field.getText();
+        String num2Text = num2Field.getText();
 
+        if (isValidNumber(num1Text) && isValidNumber(num2Text)) {
+            int num1 = Integer.parseInt(num1Text);
+            int num2 = Integer.parseInt(num2Text);
+            double result = 0.0;
+
+            switch (operator) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    if (num2 != 0) {
+                        result = (double) num1 / num2;
+                    } else {
+                        resultLabel.setText("Result: Error (Division by zero)");
+                        return;
+                    }
+                    break;
+                case 'g': // GCD
+                    result = gcd(num1, num2);
+                    break;
+                case 'l': // LCM
+                    result = lcm(num1, num2);
+                    break;
+                default:
+                    resultLabel.setText("Result: Invalid Operation");
+                    return;
+            }
+
+            resultLabel.setText("Result: " + String.format("%.2f", result));
+        } else {
+            resultLabel.setText("Result: Invalid Input");
+        }
+    }
 
     
 }
