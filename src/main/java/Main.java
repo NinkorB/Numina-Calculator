@@ -53,11 +53,22 @@ public class Main extends Application {
         divideButton.setOnAction(e -> performOperation('/'));
         GridPane.setConstraints(divideButton, 2, 1);
 
-        grid.getChildren().addAll(num1Field, num2Field, resultLabel, addButton, subtractButton, multiplyButton, divideButton);
+        Button gcdButton = new Button("GCD");
+        gcdButton.setOnAction(e -> performOperation('g'));
+        GridPane.setConstraints(gcdButton, 1, 2);
 
-        Scene scene = new Scene(grid, 300, 200);
+        Button lcmButton = new Button("LCM");
+        lcmButton.setOnAction(e -> performOperation('l'));
+        GridPane.setConstraints(lcmButton, 2, 2);
+
+        grid.getChildren().addAll(num1Field, num2Field, resultLabel, addButton, subtractButton, multiplyButton, divideButton, gcdButton, lcmButton);
+
+        Scene scene = new Scene(grid, 300, 250);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
+
+
+    
 }
