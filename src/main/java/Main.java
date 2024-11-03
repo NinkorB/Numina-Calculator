@@ -112,5 +112,21 @@ private void performOperation(char operator) {
         }
     }
 
+    private boolean isValidNumber(String text) {
+        return text != null && !text.isEmpty() && text.matches("-?\\d+");
+    }
+
+    // Helper method to calculate GCD
+    private int gcd(int a, int b) {
+        if (b == 0) {
+            return a;
+        }
+        return gcd(b, a % b);
+    }
+
+    // Helper method to calculate LCM
+    private int lcm(int a, int b) {
+        return (a * b) / gcd(a, b);
+    }
     
 }
